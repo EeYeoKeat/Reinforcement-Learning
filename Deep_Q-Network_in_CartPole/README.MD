@@ -1,0 +1,14 @@
+The goal of CartPole is to balance a pole connected with one joint on top of a moving cart in maximum time. There are 4 kinds of information given by the state, such as angle of the pole and position of the cart. An agent will perform actions by either move the cart to left or right (0 or 1).
+
+# Dependencies
+<ul>
+  <li>TensorFlow</li>
+  <li>Numpy</li>
+  <li>Matplotlib</li>
+  <li>Pandas</li>
+  <li>Seaborn</li>
+  <li>Scikit-Learn</li>
+</ul>
+
+# References
+https://keon.io/deep-q-learning/
