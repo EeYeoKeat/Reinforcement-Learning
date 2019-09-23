@@ -1,6 +1,11 @@
-The goal of CartPole is to balance a pole connected with one joint on top of a moving cart in maximum time. There are 4 kinds of information given by the state, such as angle of the pole and position of the cart. An agent will perform actions by either move the cart to left or right (0 or 1).
+The goal of CartPole is to balance a pole connected with one joint on top of a moving cart in maximum time. There are 4 kinds of information given by the state, such as angle of the pole and position of the cart. An agent will perform actions by either move the cart to left or right (0 or 1) to balance the pole avoid from fall.
 
 <img src="animation.gif">
+
+
+# Deep Neural Network
+
+<img src="DNN diagram.PNG">
 
 # Dependencies
 <ul>
