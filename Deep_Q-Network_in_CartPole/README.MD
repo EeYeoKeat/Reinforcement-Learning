@@ -11,11 +11,9 @@ Below diagram is a general deep neural network which is more simple than the net
 # Dependencies
 <ul>
   <li>TensorFlow</li>
+  <li>Keras</li>
   <li>Numpy</li>
-  <li>Matplotlib</li>
-  <li>Pandas</li>
-  <li>Seaborn</li>
-  <li>Scikit-Learn</li>
+  <li>OpenAI Gym</li>
 </ul>
 
 # References
