@@ -5,7 +5,8 @@ The goal of CartPole is to balance a pole connected with one joint on top of a m
 
 # Deep Neural Network
 
-Below diagram is a general deep neural network which is more simple than the network used in this CartPole game. Since CartPole output has two allowed actions, move left or right at each state, therefore, the output node should have two nodes rather than single node.
+Below diagram is a general deep neural network which is more simple than the network used in this CartPole game. Since CartPole output has two allowed actions, move left or right at each state, therefore, the output node should have two nodes rather than single node.<br>
+
 <img src="DNN diagram.PNG">
 
 # Dependencies
