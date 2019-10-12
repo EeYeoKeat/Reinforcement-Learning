@@ -3,9 +3,9 @@ The goal of CartPole is to balance a pole connected with one joint on top of a m
 The agent is trained to maximize the duration of pole maintain vertically on the moving cart. Below is the cartPole playing automatically to balancing the pole. As shown in result, the higher the episode, the larger value of the score.
 
 Episode will be terminated for following condition:
-•	Pole Angle is more than 12 degrees
-•	Cart Position is more than 2.4 (center of the cart reaches the edge of the display)
-•	Episode length is greater than 200
+<br>•	Pole Angle is more than 12 degrees
+<br>•	Cart Position is more than 2.4 (center of the cart reaches the edge of the display)
+<br>•	Episode length is greater than 200
 
 
 <img src="animation.gif">
