@@ -14,7 +14,7 @@ Episode will be terminated for following condition:
 
 # Deep Neural Network
 
-Below diagram is a general deep neural network which is more simple than the network used in this CartPole game. Since CartPole output has two allowed actions, move left or right at each state, therefore, the output node should have two nodes rather than single node.<br>
+Below diagram is a general deep neural network. However, the network used in this CartPole game will have two output nodes since CartPole has two allowed actions, move left or right at each state.<br>
 
 <img src="DNN diagram.PNG">
 
