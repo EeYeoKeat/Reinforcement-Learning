@@ -2,6 +2,7 @@ The goal of CartPole is to balance a pole connected with one joint on top of a m
 
 <img src="animation.gif">
 
+<img src="result1.PNG">
 
 # Deep Neural Network
 
