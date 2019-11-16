@@ -1,6 +1,6 @@
 # Deep Reinforcement Learning in stock trading by using Chainer
 
-<a href="https://chainer.org/>Chainer</a> is a deep learning framework for us to build powerful neural network.
+<a href="https://chainer.org/">Chainer</a> is a deep learning framework for us to build powerful neural network.
 
 
 
