@@ -5,6 +5,7 @@
 """
 import numpy as np
 import matplotlib.pyplot as plt
+import gym
 
 def plot_learning_curve(x, scores, epsilons, filename):
     fig = plt.figure()
@@ -31,3 +32,23 @@ def plot_learning_curve(x, scores, epsilons, filename):
     ax2.tick_params(axis='y', colors="C1")
 
     plt.savefig(filename)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
