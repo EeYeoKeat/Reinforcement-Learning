@@ -1,4 +1,4 @@
-# SARSA agent version 2
+# SARSA agent
 
 Test environment is FrovenLake-v0 from OpenAIgym.
 
