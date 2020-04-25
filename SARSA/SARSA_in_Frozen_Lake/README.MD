@@ -15,6 +15,9 @@ FHFH <br>
 FFFH <br>
 HFFG <br>
 
-Total 4 actions available
-LEFT = 0 DOWN = 1 RIGHT = 2 UP = 3
+Total 4 actions available <br>
+LEFT = 0 <br>
+DOWN = 1 <br>
+RIGHT = 2 <br>
+UP = 3 <br>
 
