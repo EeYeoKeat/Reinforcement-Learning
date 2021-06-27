@@ -19,8 +19,10 @@ class SARSALambdaAgent():
         
         # initialize q
         self.init_Q()
+        
         self.lambda_decay = ld_rate
         self.eligibility_trace = self.Q.copy()
+
 
     def init_Q(self):
         for state in range(self.n_states):
@@ -38,12 +40,18 @@ class SARSALambdaAgent():
     def decrement_epsilon(self):
         self.epsilon = self.epsilon * self.eps_dec if self.epsilon > self.min_epsilon else self.min_epsilon
         
-    def learn(self, state, action, reward, state_, action_):
-        actions = np.array([self.Q[(state_, a)] for a in range(self.n_actions)])
+    def learn(self, state, action, reward, state_, action_):        
+        target_Q = reward + self.discount_factor*self.Q[(state_, action_)]
+        predict_Q = self.Q[(state, action)]
         
-        self.Q[(state, action)] += self.learning_rate * (reward + self.discount_factor*self.Q[(state_, action_)]-self.Q[(state, action)])
+        diff_error = target_Q - predict_Q
         
-        self.decrement_epsilon()
-        
-            
+        self.eligibility_trace[(state, )] = 0
+        self.eligibility_trace[(state, action)] = 1
 
+
+        self.Q[(state, action)] += self.learning_rate * diff_error * self.eligibility_trace[(state, action)]
+
+        self.decrement_epsilon()
+        # decay eligibility trace after update
+        self.eligibility_trace[(state, action)] *= self.discount_factor * self.lambda_decay

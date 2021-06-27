@@ -21,3 +21,7 @@ DOWN = 1 <br>
 RIGHT = 2 <br>
 UP = 3 <br>
 
+
+## References:
+1) https://github.com/MorvanZhou/Reinforcement-learning-with-tensorflow/blob/master/contents/4_Sarsa_lambda_maze/RL_brain.py
+
