@@ -14,6 +14,8 @@ Algorithms:
 
 2) Softmax exploration, also known as Boltzmann exploration, is another strategy used for finding an optimal bandit. In the epsilon-greedy policy, all of the actions are given chance equivalently, but in softmax exploration, the action are selected based on a probability from the Boltzmann distribution.
 
+<img src="https://flic.kr/ps/3Sz79P">
+
 3) Instead of choosing actions based on probability, the upper confidence bound (UCB) selecting the best action based on a confidence interval. The UCB will more focus on explore the actions that has a high UCB rather than other.
 
 4) Thompson sampling (TS) is another popularly used algorithm to overcome the exploration-exploitation dilemma. It is a probabilistic algorithm and is based on a prior distribution. The term prior distribution indicate that it is initial distributions calculated based on prior mean sample rewards for each of the k arms. Using Bernoulli rewards, the value of beta distribution [alpha, beta] lies within the interval [0,1]. Alpha represents the number of times we receive the positive rewards and beta represents the number of times we receive the negative rewards. Sample a value from each of the k distributions and use this value as a prior
