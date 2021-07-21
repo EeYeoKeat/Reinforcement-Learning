@@ -14,7 +14,7 @@ Algorithms:
 
 2) Softmax exploration, also known as Boltzmann exploration, is another strategy used for finding an optimal bandit. In the epsilon-greedy policy, all of the actions are given chance equivalently, but in softmax exploration, the action are selected based on a probability from the Boltzmann distribution.
 
-<img src="https://github.com/ee2110/Reinforcement-Learning/blob/master/img/Probability%20boltzmann%20distribution.JPG" width="50%">
+<img src="https://github.com/ee2110/Reinforcement-Learning/blob/master/img/Probability%20boltzmann%20distribution.JPG" width="30%">
 
 3) Instead of choosing actions based on probability, the upper confidence bound (UCB) selecting the best action based on a confidence interval. The UCB will more focus on explore the actions that has a high UCB rather than other.
 
