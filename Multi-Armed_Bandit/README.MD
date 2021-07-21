@@ -29,7 +29,9 @@ Thompson sampling (TS) is another popularly used algorithm to overcome the explo
 
 
 ### Highlights
-1. In the epsilon-greedy policy, all of the actions are given chance equivalently, but in softmax exploration, the action are selected based on a probability from the Boltzmann distribution. Although epsilon-greedy action selection is an effective and popular means of balancing exploration and exploitation in reinforcement learning, one drawback is that when it explores it chooses equally among all actions. This means that it is as likely to choose the worst-appearing action as it is to choose the next-to-best action. In tasks where the worst actions are very bad, this may be unsatisfactory. The obvious solution is to vary the action probabilities as a graded function of estimated value. The greedy action is still given the highest selection probability, but all the others are ranked and weighted according to their value estimates. These are called softmax action selection rules.
+1. In epsilon-greedy policy method, the selection of optimal arm is always the same in the same game regardless the epsilon value.
+
+2. As mentioned in [4], all of the actions are given chance equivalently by using the epsilon-greedy policy, but in softmax exploration, the action are selected based on a probability from the Boltzmann distribution. Although epsilon-greedy action selection is an effective and popular means of balancing exploration and exploitation in reinforcement learning, one drawback is that when it explores it chooses equally among all actions. This means that it is as likely to choose the worst-appearing action as it is to choose the next-to-best action. In tasks where the worst actions are very bad, this may be unsatisfactory. The obvious solution is to vary the action probabilities as a graded function of estimated value. The greedy action is still given the highest selection probability, but all the others are ranked and weighted according to their value estimates. These are called softmax action selection rules.
 
 
 References:
