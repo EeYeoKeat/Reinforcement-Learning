@@ -4,21 +4,32 @@ The multi-armed bandit (MAB) problem often refer to arm of a K-slot machine to p
 
 In reinforcement learning (RL), the agent always need to balance between exploitation and exploration in order to learn the optimal target values. Therefore, some mechanism are proposed to deal with this exploration-exploitation dilemma.
 
-Algorithms:
-1) Epsilon-greedy policy
-2) Softmax exploration
-3) Upper confidence bound (UCB)
-4) Thompson sampling
+### Algorithms:
+1. Epsilon-greedy policy
+2. Softmax exploration
+3. Upper confidence bound (UCB)
+4. Thompson sampling
 
-1) The epsilon-greedy policy is commonly applied in several RL approaches such as Q-learning and DQN. With the epsilon-greedy policy, the agent are allowed to explore the environment with a probability of epsilon to select random actions, otherwise, it will select the maximum value with a probability 1-epsilon.
+#### Epsilon-Greedy Policy
+The epsilon-greedy policy is commonly applied in several RL approaches such as Q-learning and DQN. With the epsilon-greedy policy, the agent are allowed to explore the environment with a probability of epsilon to select random actions, otherwise, it will select the maximum value with a probability 1-epsilon.
 
-2) Softmax exploration, also known as Boltzmann exploration, is another strategy used for finding an optimal bandit. In the epsilon-greedy policy, all of the actions are given chance equivalently, but in softmax exploration, the action are selected based on a probability from the Boltzmann distribution. Although epsilon-greedy action selection is an effective and popular means of balancing exploration and exploitation in reinforcement learning, one drawback is that when it explores it chooses equally among all actions. This means that it is as likely to choose the worst-appearing action as it is to choose the next-to-best action. In tasks where the worst actions are very bad, this may be unsatisfactory. The obvious solution is to vary the action probabilities as a graded function of estimated value. The greedy action is still given the highest selection probability, but all the others are ranked and weighted according to their value estimates. These are called softmax action selection rules.
+
+#### Softmax Exploration
+Softmax exploration, also known as Boltzmann exploration, is another strategy used for finding an optimal bandit by select action using probability of Boltzmann distribution.
 
 <img src="https://github.com/ee2110/Reinforcement-Learning/blob/master/img/Probability%20boltzmann%20distribution.JPG" width="30%">
 
-3) Instead of choosing actions based on probability, the upper confidence bound (UCB) selecting the best action based on a confidence interval. The UCB will more focus on explore the actions that has a high UCB rather than other.
 
-4) Thompson sampling (TS) is another popularly used algorithm to overcome the exploration-exploitation dilemma. It is a probabilistic algorithm and is based on a prior distribution. The term prior distribution indicate that it is initial distributions calculated based on prior mean sample rewards for each of the k arms. Using Bernoulli rewards, the value of beta distribution [alpha, beta] lies within the interval [0,1]. Alpha represents the number of times we receive the positive rewards and beta represents the number of times we receive the negative rewards. Sample a value from each of the k distributions and use this value as a prior mean, then the arm that has the highest prior mean and observes the reward. Lastly, use the observed reward to modify the prior distribution.
+#### upper Confidence Bound
+Instead of choosing actions based on probability, the upper confidence bound (UCB) selecting the best action based on a confidence interval. The UCB will more focus on explore the actions that has a high UCB rather than other.
+
+
+#### Thompson sampling
+Thompson sampling (TS) is another popularly used algorithm to overcome the exploration-exploitation dilemma. It is a probabilistic algorithm and is based on a prior distribution. The term prior distribution indicate that it is initial distributions calculated based on prior mean sample rewards for each of the k arms. Using Bernoulli rewards, the value of beta distribution [alpha, beta] lies within the interval [0,1]. Alpha represents the number of times we receive the positive rewards and beta represents the number of times we receive the negative rewards. Sample a value from each of the k distributions and use this value as a prior mean, then the arm that has the highest prior mean and observes the reward. Lastly, use the observed reward to modify the prior distribution.
+
+
+### Highlights
+1. In the epsilon-greedy policy, all of the actions are given chance equivalently, but in softmax exploration, the action are selected based on a probability from the Boltzmann distribution. Although epsilon-greedy action selection is an effective and popular means of balancing exploration and exploitation in reinforcement learning, one drawback is that when it explores it chooses equally among all actions. This means that it is as likely to choose the worst-appearing action as it is to choose the next-to-best action. In tasks where the worst actions are very bad, this may be unsatisfactory. The obvious solution is to vary the action probabilities as a graded function of estimated value. The greedy action is still given the highest selection probability, but all the others are ranked and weighted according to their value estimates. These are called softmax action selection rules.
 
 
 References:
