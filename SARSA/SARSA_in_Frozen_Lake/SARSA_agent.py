@@ -37,9 +37,8 @@ class Agent():
         self.epsilon = self.epsilon * self.eps_dec if self.epsilon > self.min_epsilon else self.min_epsilon
         
     def learn(self, state, action, reward, state_, action_):
-        actions = np.array([self.Q[(state_, a)] for a in range(self.n_actions)])
-        
-        self.Q[(state, action)] += self.learning_rate * (reward + self.discount_factor*self.Q[(state_, action_)]-self.Q[(state, action)])
+
+        self.Q[(state, action)] += self.learning_rate * (reward + (self.discount_factor*self.Q[(state_, action_)])-self.Q[(state, action)])
         
         self.decrement_epsilon()
         
