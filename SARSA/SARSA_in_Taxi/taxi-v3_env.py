@@ -1,8 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-@author: EE
 
-"""
 import numpy as np
 import matplotlib.pyplot as plt
 import gym
@@ -10,8 +6,8 @@ import pandas as pd
 from SARSA_agent import Agent
 
 if __name__ == '__main__':
-    env = gym.make('FrozenLake-v0')
-    agent = Agent(alpha=1e-5, gamma=0.9, n_actions=4, n_states=16, eps_start=1.0, eps_min=0.1, eps_dec=0.999999)
+    env = gym.make('Taxi-v3')
+    agent = Agent(alpha=1e-5, gamma=0.9, n_actions=env.nA, n_states=env.nS, eps_start=1.0, eps_min=0.1, eps_dec=0.9999999)
     scores = []
     win_percentage_list = []
     n_games = 100000
@@ -20,10 +16,10 @@ if __name__ == '__main__':
         done = False
         observation = env.reset()
         score = 0
-        # For SARSA model, the action taken before learn update
+
         action = agent.choose_action(observation)
         while not done:
-            env.render()
+            #env.render()
             # the info may be replaced with _
             observation_, reward, done, info = env.step(action)
             
