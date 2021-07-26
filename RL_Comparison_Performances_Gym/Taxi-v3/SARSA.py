@@ -1,17 +1,18 @@
-
 import numpy as np
 import matplotlib.pyplot as plt
 import gym
 import pandas as pd
 import argparse
+import time
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--lr', type=float, default=1e-4)
-parser.add_argument('--gamma', type=float, default=0.9)
-parser.add_argument('--eps', type=float, default=1.0)
-parser.add_argument('--eps_decay', type=float, default=0.9999999)
-parser.add_argument('--eps_min', type=float, default=0.1)
-parser.add_argument('--num_games', type=float, default=10000)
+parser = argparse.ArgumentParser(description='Hyperparameter for SARSA agent')
+parser.add_argument('--lr', type=float, help="learning rate", default=1e-4)
+parser.add_argument('--gamma', type=float, help="discount factor", default=0.9)
+parser.add_argument('--eps', type=float, help="initial epsilon", default=1.0)
+parser.add_argument('--eps_decay', type=float, help="epsilon decay rate", default=0.999999)
+parser.add_argument('--eps_min', type=float, help="minimum epsilon", default=0.1)
+parser.add_argument('--num_games', type=float, help="train on how many games?", default=20000)
+parser.add_argument('-v', '--verbose', type=int, default=2, help="print out episode")
 
 args = parser.parse_args()
 
@@ -52,12 +53,23 @@ class SARSA_Agent():
         
         self.decrement_epsilon()
 
+def plot_result(r, avg_r):
+    plt.plot(r, color='b')    
+    plt.plot(avg_r, color='r')
+    plt.title('Scores obtained by agent')
+    plt.ylabel('Score')
+    plt.xlabel('Games')
+    plt.legend(['Scores per game', 'Average Scores'], loc='upper left')
+    plt.show()
+    
+
 if __name__ == '__main__':
     env = gym.make('Taxi-v3')
     agent = SARSA_Agent(alpha=args.lr, gamma=args.gamma, n_actions=env.nA, n_states=env.nS, eps_start=args.eps, eps_min=args.eps_min, eps_dec=args.eps_decay)
     scores = []
-    win_percentage_list = []
+    avg_scores_list = []
     n_games = args.num_games
+    start_time = time.time()
     
     for i in range(n_games):
         done = False
@@ -83,16 +95,24 @@ if __name__ == '__main__':
             
         scores.append(score)
         
-        if i % 100 == 0:
-            # calculate the average of win percentage for last 100 games
-            win_percentage = np.mean(scores[-100:])
-            win_percentage_list.append(win_percentage)
-            if i % 1000 == 0:
-                print('episode',i, 'win percentage %.2f' % win_percentage, 'epsilon %.2f' % agent.epsilon)
-                
+        avg_scores = np.mean(scores[-100:])
+        avg_scores_list.append(avg_scores)
         
-    plt.plot(win_percentage_list)
-    plt.show()
+        if i % 100 == 0:
+            if args.verbose == 2:
+                print('episode',i, 'average scores on last 100 games %.2f' % avg_scores, 'epsilon %.2f' % agent.epsilon)
+            elif args.verbose == 1:
+                print('Training episode',i, 'win percentage %.2f' % avg_scores)
+            else:
+                print('Overall Average reward: ',np.mean(avg_scores))
+            
+                
+    end_time = time.time()
+    duration = end_time - start_time
+    plot_result(scores, avg_scores_list)
+    print('Overall Average reward: ',np.mean(avg_scores))
+    print('Time Taken: ',duration)
+
             
 
 
