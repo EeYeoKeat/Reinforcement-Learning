@@ -4,6 +4,7 @@ import gym
 import pandas as pd
 import argparse
 import time
+import os
 
 parser = argparse.ArgumentParser(description='Hyperparameter for SARSA agent')
 parser.add_argument('--lr', type=float, help="learning rate", default=1e-4)
@@ -56,12 +57,25 @@ class SARSA_Agent():
 def plot_result(r, avg_r):
     plt.plot(r, color='b')    
     plt.plot(avg_r, color='r')
-    plt.title('Scores obtained by agent')
+    plt.title('Scores obtained by SARSA agent')
     plt.ylabel('Score')
     plt.xlabel('Games')
     plt.legend(['Scores per game', 'Average Scores'], loc='upper left')
     plt.show()
-    
+
+def export_result(avg_r):
+    if os.path.exists('./agent_scores.csv'):
+        print('csv file exists')
+        result = pd.read_csv('agent_scores.csv')
+        result['SARSA'] = pd.Series(avg_r)
+        result.to_csv('agent_scores.csv', index=False)
+        print('results saved!')
+    else:
+        print('csv file not exists, creating new file.')
+        column = {'SARSA':pd.Series(avg_r)}
+        table = pd.DataFrame(column)
+        table.to_csv('agent_scores.csv')
+        print('results saved!')
 
 if __name__ == '__main__':
     env = gym.make('Taxi-v3')
@@ -110,9 +124,9 @@ if __name__ == '__main__':
     end_time = time.time()
     duration = end_time - start_time
     plot_result(scores, avg_scores_list)
-    print('Overall Average reward: ',np.mean(avg_scores))
+    print('Overall mean reward: ',np.mean(scores))
     print('Time Taken: ',duration)
-
+    export_result(avg_scores_list)
             
 
 
