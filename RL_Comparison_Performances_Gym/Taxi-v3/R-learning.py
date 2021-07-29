@@ -134,7 +134,7 @@ if __name__ == '__main__':
     plot_result(scores, avg_scores_list)
     print('Overall mean reward: ',np.mean(scores))
     print('Time Taken: ',duration)
-    #export_result(avg_scores_list)
+    export_result(avg_scores_list)
 
             
 
