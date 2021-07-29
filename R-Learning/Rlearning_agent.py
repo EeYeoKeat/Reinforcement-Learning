@@ -5,18 +5,18 @@
 
 import numpy as np
 
-class Agent():
-    def __init__(self, alpha, gamma, n_actions, n_states, eps_start, eps_min, eps_dec):
+class RLearning_Agent():
+    def __init__(self, alpha, beta, rho,  n_actions, n_states, eps_start, eps_min, eps_dec):
         self.learning_rate = alpha
-        self.discount_factor = gamma
         self.n_actions = n_actions
         self.n_states = n_states
         self.epsilon = eps_start
         self.min_epsilon = eps_min
         self.eps_dec = eps_dec
+        self.rho = rho
+        self.beta = beta
         
         self.Q = {}
-        
         # initialize q
         self.init_Q()
         
@@ -40,7 +40,13 @@ class Agent():
         actions = np.array([self.Q[(state_, a)] for a in range(self.n_actions)])
         a_max = np.argmax(actions)
         
-        self.Q[(state, action)] += self.learning_rate * (reward + self.discount_factor*self.Q[(state_,a_max)]-self.Q[(state, action)])
+        self.Q[(state, action)] += self.learning_rate * (reward - self.rho + self.Q[(state_,a_max)]-self.Q[(state, action)])
+        
+        current_actions = np.array([self.Q[(state, a)] for a in range(self.n_actions)])
+        current_a_max = np.argmax(current_actions)
+        
+        if(self.Q[(state, action)] == self.Q[(state,current_a_max)]):
+            self.rho += self.beta*(reward - self.rho + self.Q[(state_,a_max)] - self.Q[(state,current_a_max)])
         
         self.decrement_epsilon()
         
