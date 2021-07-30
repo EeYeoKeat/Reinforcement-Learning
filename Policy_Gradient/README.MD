@@ -1,0 +1,3 @@
+# Policy Gradient
+
+Policy gradient is one of the well-known group in reinforcement learning family. The advantage of policy gradient over the typical Q-learning approach is perform continuous action directly without compute time of backpropagation. Unlike value-based approach such as Q-learning which is output descrete action value, the policy gradient output the continuous actions directly instead of state-action value.
