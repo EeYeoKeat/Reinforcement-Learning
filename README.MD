@@ -9,12 +9,14 @@ This repository is collection of reinforcement learning algorithms. At this mome
  1. [Q-learning](Q-learning)
  2. [SARSA](SARSA)
  3. [SARSA Lambda](SARSA_Lambda)
- 4. [Deep Q-Network](Deep_Q-Network)
- 5. [Double DQN](Double_DQN)
- 6. [Dueling DQN](Dueling_DQN)
- 7. [Dueling Double DQN](Dueling_Double_DQN)
- 8. [Actor Critic](Actor-Critic)
- 9. [Deep Deterministic Policy Gradient](DDPG)
+ 4. [R-learning](R-learning)
+ 5. [Policy Gradient](Policy_Gradient)
+ 6. [Deep Q-Network](Deep_Q-Network)
+ 7. [Double DQN](Double_DQN)
+ 8. [Dueling DQN](Dueling_DQN)
+ 9. [Dueling Double DQN](Dueling_Double_DQN)
+ 10. [Actor Critic](Actor-Critic)
+ 11. [Deep Deterministic Policy Gradient](DDPG)
 
 ### Applications & Experiments
 
