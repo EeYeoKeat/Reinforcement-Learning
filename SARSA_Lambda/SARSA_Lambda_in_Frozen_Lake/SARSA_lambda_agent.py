@@ -53,7 +53,7 @@ class SARSALambdaAgent():
         self.eligibility_trace.loc[state, action] = 1
 
 
-        self.Q.loc[state, action] += self.learning_rate * diff_error * self.eligibility_trace.loc[state, action]
+        self.Q += self.learning_rate * diff_error * self.eligibility_trace
 
         self.decrement_epsilon()
         # decay eligibility trace after update
