@@ -60,6 +60,14 @@ class Qlearning_Agent():
         actions = np.array([self.Q[(state_, a)] for a in range(self.n_actions)])
         a_max = np.argmax(actions)
         
+        '''
+        q_predict = self.Q[(state, action)]
+        if not done:
+            q_target = reward + self.discount_factor * self.Q[(state_,a_max)]
+        else:
+            q_target = reward 
+        self.Q[(state, action)] += self.learning_rate * (q_target - q_predict)
+        '''
         self.Q[(state, action)] += self.learning_rate * (reward + self.discount_factor*self.Q[(state_,a_max)]-self.Q[(state, action)])
         
         self.decrement_epsilon()
@@ -103,6 +111,8 @@ if __name__ == '__main__':
             #env.render()
             action = agent.choose_action(observation)
             observation_, reward, done, info = env.step(action)
+            
+            # agent.learn(observation, action, reward, observation_, done)
             agent.learn(observation, action, reward, observation_)
             score += reward
             observation = observation_
