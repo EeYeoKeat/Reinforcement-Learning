@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 
-@author: Yeo Keat
+@author: EE
 """
 import numpy as np
 import matplotlib.pyplot as plt
