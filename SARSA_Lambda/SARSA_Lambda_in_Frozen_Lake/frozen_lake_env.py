@@ -11,10 +11,10 @@ from SARSA_lambda_agent import SARSALambdaAgent
 
 if __name__ == '__main__':
     env = gym.make('FrozenLake-v0')
-    agent = SARSALambdaAgent(alpha=0.001, gamma=0.9, n_actions=4, n_states=16, eps_start=1.0, eps_min=0.01, eps_dec=0.9999995, ld_rate=0.90)
+    agent = SARSALambdaAgent(alpha=0.0001, gamma=0.9, n_actions=4, n_states=16, eps_start=1.0, eps_min=0.01, eps_dec=0.999995, ld_rate=0.90)
     scores = []
     win_percentage_list = []
-    n_games = 100000
+    n_games = 300000
     
     for i in range(n_games):
         done = False
@@ -23,6 +23,7 @@ if __name__ == '__main__':
         # For SARSA model, the action taken before learn update
         action = agent.choose_action(observation)
         while not done:
+            env.render()
             # the info may be replaced with _
             observation_, reward, done, info = env.step(action)
             
