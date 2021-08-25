@@ -26,4 +26,6 @@ DOWN = 1 <br>
 RIGHT = 2 <br>
 UP = 3 <br>
 
+
+**note** The gym version experimented in this folder is 0.17.0 which claimed that contained some issues in reward system. There will be latest version which has solved the issue, remember check on their documentation or github. 
 ---
