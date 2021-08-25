@@ -7,26 +7,36 @@ import numpy as np
 import matplotlib.pyplot as plt
 import gym
 import pandas as pd
-from Q_learning_agent_v2 import Agent
+from SARSA_agent import Agent
 
 if __name__ == '__main__':
     env = gym.make('FrozenLake-v0')
-    agent = Agent(alpha=0.001, gamma=0.9, n_actions=4, n_states=16, eps_start=1.0, eps_min=0.01, eps_dec=0.9999995)
+    agent = Agent(alpha=1e-5, gamma=0.9, n_actions=4, n_states=16, eps_start=1.0, eps_min=0.1, eps_dec=0.999999)
     scores = []
     win_percentage_list = []
-    n_games = 500000
+    n_games = 100000
     
     for i in range(n_games):
         done = False
         observation = env.reset()
         score = 0
+        # For SARSA model, the action taken before learn update
+        action = agent.choose_action(observation)
         while not done:
-            action = agent.choose_action(observation)
+            env.render()
             # the info may be replaced with _
             observation_, reward, done, info = env.step(action)
-            agent.learn(observation, action, reward, observation_)
+            
+            # In SARSA as on-policy, agent choose next action based on next state
+            action_ = agent.choose_action(observation)
+            
+            # SARSA will learn from the transition state, action, reward, state_, action_
+            agent.learn(observation, action, reward, observation_, action_)
             score += reward
             observation = observation_
+            
+            # Agent is confirm to choose that action
+            action = action_
             
         scores.append(score)
         

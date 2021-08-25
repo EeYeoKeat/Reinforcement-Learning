@@ -11,7 +11,7 @@ from SARSA_lambda_agent import SARSALambdaAgent
 
 if __name__ == '__main__':
     env = gym.make('FrozenLake-v0')
-    agent = SARSALambdaAgent(alpha=0.0001, gamma=0.9, n_actions=4, n_states=16, eps_start=1.0, eps_min=0.01, eps_dec=0.999995, ld_rate=0.90)
+    agent = SARSALambdaAgent(alpha=1e-5, gamma=0.85, n_actions=4, n_states=16, eps_start=1.0, eps_min=0.1, eps_dec=0.999999, ld_rate=0.99)
     scores = []
     win_percentage_list = []
     n_games = 300000
@@ -23,7 +23,7 @@ if __name__ == '__main__':
         # For SARSA model, the action taken before learn update
         action = agent.choose_action(observation)
         while not done:
-            env.render()
+            # env.render()
             # the info may be replaced with _
             observation_, reward, done, info = env.step(action)
             
@@ -41,7 +41,7 @@ if __name__ == '__main__':
         scores.append(score)
         
         if i % 100 == 0:
-            # calculate the average of win percentage for last 100 games
+            # calculate the average of win percentage for last N games
             win_percentage = np.mean(scores[-100:])
             win_percentage_list.append(win_percentage)
             if i % 1000 == 0:

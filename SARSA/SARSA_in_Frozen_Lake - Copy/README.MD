@@ -1,4 +1,4 @@
-# Q-learning agent version 2
+# SARSA agent
 
 Test environment is FrovenLake-v0 from OpenAIgym.
 
@@ -20,3 +20,4 @@ LEFT = 0 <br>
 DOWN = 1 <br>
 RIGHT = 2 <br>
 UP = 3 <br>
+
