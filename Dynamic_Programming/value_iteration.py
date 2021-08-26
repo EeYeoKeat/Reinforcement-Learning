@@ -1,7 +1,7 @@
 import gym
 import numpy as np
 
-env = gym.make('FrozenLake8x8-v0')
+env = gym.make("FrozenLake-v0") # is_slippery=False
 
 def value_iteration(env, gamma = 1.0):
     # the discount factor value is 1
@@ -20,7 +20,8 @@ def value_iteration(env, gamma = 1.0):
                 next_states_rewards = []
                 
                 for next_sr in env.P[state][action]:
-                    trans_prob, next_state, reward_prob, _ = next_sr
+                    trans_prob, next_state, reward_prob, last_step = next_sr
+                    print(next_sr)
                     next_states_rewards.append((trans_prob * (reward_prob + gamma * updated_value_table[next_state])))
                     
                 Q_value.append(np.sum(next_states_rewards))
@@ -63,7 +64,20 @@ def test_policy(learned_policy, n_games):
     return scores
 
 optimal_value_function = value_iteration(env=env,gamma=1.0)
-optimal_policy = extract_policy(optimal_value_function, gamma=1.0)
+#optimal_policy = extract_policy(optimal_value_function, gamma=1.0)
 
-print(optimal_policy)
+policy = np.zeros(env.observation_space.n)
+
+for state in range(env.observation_space.n):
+    Q_table = np.zeros(env.action_space.n)
+
+    for action in range(env.action_space.n):
+        for next_sr in env.P[state][action]:
+            trans_prob, next_state, reward_prob, _ = next_sr
+            Q_table[action] += (trans_prob * (reward_prob + (1.0 * optimal_value_function[next_state])))
+    policy[state] = np.argmax(Q_table)
+    
+    print(policy)
+    print(Q_table)
+    print()
 
